@@ -113,39 +113,16 @@ $(document).ready(function () {
   tarotIndicators.click(function () {
     const targetIndex = parseInt($(this).data("index"));
     updateTarotCarousel(targetIndex);
-
-    // Restart auto rotation after manual interaction
-    stopTarotAutoRotate();
-    setTimeout(() => {
-      startTarotAutoRotate();
-    }, 2000); // 2초 후 재시작
   });
 
   // Card click handlers
   tarotCards.click(function () {
     const targetIndex = parseInt($(this).data("index"));
     updateTarotCarousel(targetIndex);
-
-    // Restart auto rotation after manual interaction
-    stopTarotAutoRotate();
-    setTimeout(() => {
-      startTarotAutoRotate();
-    }, 2000); // 2초 후 재시작
   });
 
-  // Pause auto rotation on hover
-  $(".tarot-cards").hover(
-    function () {
-      stopTarotAutoRotate();
-    },
-    function () {
-      startTarotAutoRotate();
-    }
-  );
-
-  // Initialize tarot cards and start auto rotation
+  // Initialize tarot cards only (no auto rotation)
   initializeTarotCards();
-  startTarotAutoRotate();
 
   // Smooth scrolling for navigation links with animation lock
   $(
