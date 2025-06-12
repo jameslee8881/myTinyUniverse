@@ -419,15 +419,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px;
-  overflow: hidden;
+  height: 500px;
   perspective: 1200px;
   width: 100%;
 }
 
 .tarot-card {
   position: absolute;
-  width: 180px;
+  width: 280px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -440,17 +439,17 @@ body {
 
 /* 카드 위치 클래스 */
 .tarot-card.center {
-  transform: translateX(0) translateY(0) scale(1.1) rotateY(0deg);
+  transform: translateX(0) translateY(0) scale(1.2) rotateY(0deg);
   z-index: 3;
 }
 
 .tarot-card.left {
-  transform: translateX(-120px) translateY(20px) scale(0.8) rotateY(20deg);
+  transform: translateX(-200px) translateY(30px) scale(0.9) rotateY(25deg);
   z-index: 1;
 }
 
 .tarot-card.right {
-  transform: translateX(120px) translateY(20px) scale(0.8) rotateY(-20deg);
+  transform: translateX(200px) translateY(30px) scale(0.9) rotateY(-25deg);
   z-index: 1;
 }
 
