@@ -124,6 +124,51 @@ $(document).ready(function () {
   // Initialize tarot cards only (no auto rotation)
   initializeTarotCards();
 
+  // 햄버거 메뉴 동작
+  const hamburger = $("#hamburger");
+  const navLinks = $("#navLinks");
+
+  // 햄버거 버튼 클릭 이벤트
+  hamburger.click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    hamburger.toggleClass("active");
+    navLinks.toggleClass("active");
+  });
+
+  // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+  navLinks.find("a").click(function () {
+    hamburger.removeClass("active");
+    navLinks.removeClass("active");
+  });
+
+  // 메뉴 외부 클릭 시 메뉴 닫기 (개선된 로직)
+  $(document).click(function (e) {
+    // 햄버거 버튼이나 그 자식 요소를 클릭한 경우 무시
+    if (hamburger.is(e.target) || hamburger.has(e.target).length > 0) {
+      return;
+    }
+
+    // 네비게이션 메뉴나 그 자식 요소를 클릭한 경우 무시
+    if (navLinks.is(e.target) || navLinks.has(e.target).length > 0) {
+      return;
+    }
+
+    // 그 외의 경우 메뉴 닫기
+    if (navLinks.hasClass("active")) {
+      hamburger.removeClass("active");
+      navLinks.removeClass("active");
+    }
+  });
+
+  // ESC 키로 메뉴 닫기
+  $(document).keydown(function (e) {
+    if (e.key === "Escape" && navLinks.hasClass("active")) {
+      hamburger.removeClass("active");
+      navLinks.removeClass("active");
+    }
+  });
+
   // Smooth scrolling for navigation links with animation lock
   $(
     ".logo a, .nav-links a, .hero-buttons .btn-primary, .hero-buttons .btn-secondary"
